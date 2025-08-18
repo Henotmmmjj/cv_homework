@@ -1,26 +1,56 @@
 import os
 from collections import Counter
 
-label_dir = 'C:\\yolov5-master\\dataset\\labels'  # 例如: 'data/labels/train'
-import os
-from collections import Counter
-
+label_dir = "C:\\yolov5-master\\dataset\\labels"  # 例如: 'data/labels/train'
 
 
 # 手动定义类名映射（或也可从 classes.txt 读取）
 class_names = [
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-    'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-    'U', 'V', 'W', 'X', 'Y', 'Z', '-'
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "-",
 ]
 
 class_counts = Counter()
 
 for file in os.listdir(label_dir):
-    if file.endswith('.txt') and file != 'classes.txt':
+    if file.endswith(".txt") and file != "classes.txt":
         file_path = os.path.join(label_dir, file)
-        with open(file_path, 'r') as f:
+        with open(file_path) as f:
             for line in f:
                 if line.strip():
                     class_id = int(line.strip().split()[0])
