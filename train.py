@@ -58,7 +58,6 @@ from utils.general import (
     check_amp,
     check_dataset,
     check_file,
-    check_git_info,
     check_git_status,
     check_img_size,
     check_requirements,
@@ -97,7 +96,7 @@ from utils.torch_utils import (
 LOCAL_RANK = int(os.getenv("LOCAL_RANK", -1))  # https://pytorch.org/docs/stable/elastic/run.html
 RANK = int(os.getenv("RANK", -1))
 WORLD_SIZE = int(os.getenv("WORLD_SIZE", 1))
-#GIT_INFO = check_git_info()
+# GIT_INFO = check_git_info()
 
 
 def train(hyp, opt, device, callbacks):
@@ -486,7 +485,7 @@ def train(hyp, opt, device, callbacks):
                     "updates": ema.updates,
                     "optimizer": optimizer.state_dict(),
                     "opt": vars(opt),
-                    #"git": GIT_INFO,  # {remote, branch, commit} if a git repo
+                    # "git": GIT_INFO,  # {remote, branch, commit} if a git repo
                     "date": datetime.now().isoformat(),
                 }
 
@@ -565,7 +564,7 @@ def parse_opt(known=False):
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--weights", type=str, default=ROOT / "yolov5s.pt", help="initial weights path")
-    parser.add_argument("--cfg", type=str, default=ROOT/"models/yolov5s.yaml", help="model.yaml path")
+    parser.add_argument("--cfg", type=str, default=ROOT / "models/yolov5s.yaml", help="model.yaml path")
     parser.add_argument("--data", type=str, default=ROOT / "data/data.yaml", help="dataset.yaml path")
     parser.add_argument("--hyp", type=str, default=ROOT / "data/hyps/hyp.scratch-low.yaml", help="hyperparameters path")
     parser.add_argument("--epochs", type=int, default=100, help="total training epochs")
